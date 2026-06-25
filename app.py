@@ -8,7 +8,7 @@ class Event:
         self.id = id
         self.title = title
 
-def to_dict(self):
+    def to_dict(self):
         return {"id": self.id, "title": self.title}
 
 # In-memory "database"
