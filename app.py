@@ -11,3 +11,9 @@ class Event:
 def to_dict(self):
         return {"id": self.id, "title": self.title}
 
+# In-memory "database"
+events = [
+    Event(1, "Tech Meetup"),
+    Event(2, "Python Workshop")
+]
+
