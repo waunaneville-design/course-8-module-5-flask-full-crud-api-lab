@@ -31,3 +31,18 @@ def create_event():
     events.append(new_event)
 
     return jsonify(new_event.to_dict()), 201
+
+# TODO: Task 1 - Define the Problem
+# Update the title of an existing event
+@app.route("/events/<int:event_id>", methods=["PATCH"])
+def update_event(event_id):
+    data = request.get_json(silent=True)
+    if not data or "title" not in data:
+        return jsonify({"error": "Request JSON must include a title."}), 400
+
+    for event in events:
+        if event.id == event_id:
+            event.title = data["title"]
+            return jsonify(event.to_dict()), 200
+
+    return jsonify({"error": "Event not found."}), 404
